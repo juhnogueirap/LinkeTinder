@@ -27,6 +27,7 @@ class CandidatoPF extends Pessoa{
         print(candidato)
     }
 
+    @Override
     String toString() {
         return "${super.toString()}, Competências: {${competencias.join(', ')}}, Idade: ${idade}, CPF: ${cpf}"
     }

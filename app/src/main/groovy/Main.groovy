@@ -1,9 +1,3 @@
-import java.time.LocalDate
-import java.util.Scanner
-import CandidatoPF
-
-
-
 static void main(String[] args) {
 
   List <CandidatoPF> candidatos = CandidatoPF.criarCandidatosDefault()
