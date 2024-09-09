@@ -94,4 +94,48 @@ class CandidatoPF extends Pessoa{
         return candidatos
     }
 
+    def static adicionarCandidato(CandidatoPF candidato, List<CandidatoPF> listaCandidatos) {
+        if (!candidato.nome || !candidato.email || !candidato.pais || !candidato.estado || !candidato.cep || !candidato.cpf || candidato.competencias.isEmpty()) {
+            throw new IllegalArgumentException("Todos os campos devem ser preenchidos e competências não podem estar vazias.")
+        } else {
+            listaCandidatos.add(candidato)
+        }
+
+    }
+
+    def  static criarCandidato(){
+        Scanner scanner = new Scanner(System.in)
+        println("Informe o seu nome: ")
+        String nome = scanner.nextLine()
+        println("Informe o seu email: ")
+        String email = scanner.nextLine()
+        println("Informe seu país: ")
+        String pais = scanner.nextLine()
+        println("Informe seu Estado: ")
+        String estado = scanner.nextLine()
+        println("Informe seu CEP: ")
+        String cep = scanner.nextLine()
+        println("Informe uma descrição: ")
+        String descricao = scanner.nextLine()
+        println("Informe suas competências separadas por espaço (ou digite 'sair' para terminar):")
+        def competencias = []
+        while (true) {
+            String input = scanner.nextLine()
+            if (input.equalsIgnoreCase("sair")) {
+                break
+            }
+            competencias.addAll(input.split("\\s+"))
+        }
+        println("Informe sua idade: ")
+        int idade = scanner.nextInt()
+        println("Informe seu CPF: ")
+        String cpf = scanner.nextLine()
+
+        CandidatoPF novoCandidato = new CandidatoPF(nome: nome, email: email, pais: pais,
+                estado: estado, cep: cep, competencias: competencias, idade: idade, cpf: cpf)
+
+        return novoCandidato
+    }
+
 }
+

@@ -1,5 +1,7 @@
 import java.time.LocalDate
 import groovy.transform.ToString
+import java.time.format.DateTimeParseException
+
 
 @ToString
 class EmpresaPJ extends Pessoa{
@@ -16,7 +18,7 @@ class EmpresaPJ extends Pessoa{
         this.cnpj = cnpj
     }
 
-    Date getDataFundacao() {
+    LocalDate getDataFundacao() {
         return dataFundacao
     }
 
@@ -89,5 +91,55 @@ class EmpresaPJ extends Pessoa{
         List<EmpresaPJ> empresas = [e1, e2, e3, e4, e5]
 
         return empresas
+    }
+
+    def static adicionarEmpresa(EmpresaPJ empresa, List<EmpresaPJ> listaEmpresas) {
+        if (!empresa.nome || !empresa.email || !empresa.pais || !empresa.estado || !empresa.cep || !empresa.cnpj || empresa.competencias.isEmpty()) {
+            throw new IllegalArgumentException("Todos os campos devem ser preenchidos e competências não podem estar vazias.")
+        } else {
+            listaEmpresas.add(empresa)
+        }
+
+    }
+
+    def  static criarEmpresa(){
+        Scanner scanner = new Scanner(System.in)
+        println("Informe o nome da empresa: ")
+        String nome = scanner.nextLine()
+        println("Informe o seu email da empresa: ")
+        String email = scanner.nextLine()
+        println("Informe o país da empresa: ")
+        String pais = scanner.nextLine()
+        println("Informe o Estado da empresa: ")
+        String estado = scanner.nextLine()
+        println("Informe o CEP da empresa: ")
+        String cep = scanner.nextLine()
+        println("Informe uma descrição: ")
+        String descricao = scanner.nextLine()
+        println("Informe as competências esperadas pela empresa separadas por espaço (ou digite 'sair' para terminar):")
+        def competencias = []
+        while (true) {
+            String input = scanner.nextLine()
+            if (input.equalsIgnoreCase("sair")) {
+                break
+            }
+            competencias.addAll(input.split("\\s+"))
+        }
+        println("Informe a data de fundação da empresa no formato yyyy-MM-dd: ")
+        String input = scanner.nextLine()
+        LocalDate dataFundacao = null
+        try {
+            dataFundacao = LocalDate.parse(input)
+        } catch (DateTimeParseException e) {
+            println("Data inválida. Por favor, use o formato yyyy-MM-dd.")
+            return null
+        }
+        println("Informe o CNPJ da empresa: ")
+        String cnpj = scanner.nextLine()
+
+        EmpresaPJ novoEmpresa = new EmpresaPJ(nome: nome, email: email, pais: pais,
+                estado: estado, cep: cep, competencias: competencias, dataFundacao: dataFundacao, cnpj: cnpj)
+
+        return novoEmpresa
     }
 }
