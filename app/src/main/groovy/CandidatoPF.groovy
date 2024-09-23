@@ -124,7 +124,7 @@ class CandidatoPF extends Pessoa{
             if (input.equalsIgnoreCase("sair")) {
                 break
             }
-            competencias.addAll(input.split("\\s+"))
+            competencias.addAll(input.split(" "))
         }
         println("Informe sua idade: ")
         int idade = scanner.nextInt()
