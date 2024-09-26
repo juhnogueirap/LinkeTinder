@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro - LinkeTinder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+    <div class="container mt-5">
+
+        <div class = "container">
+            <h1>Cadastro</h1>
+            <label>Selecione o tipo de cadastro:</label><br>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoCadastro" id="radioEmpresa" value="empresa">
+                <label class="form-check-label" for="radioEmpresa">Empresa</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoCadastro" id=radioCandidato value="candidato" checked>
+                <label class="form-check-label" for="radioCandidato">Candidato</label>
+            </div>
+        </div>
+
+
+        <div class = "container" id = "divCandidato">
+            <!-- Formulário de Candidato -->
+            <div id="formularioCandidato" class="mt-4 w-100" >
+                <div class="mb-3">
+                    <label for="nomeCandidato" class="form-label">Nome:</label>
+                    <input type="text" id="nomeCandidato" class="form-control"/>
+                </div>
+                <div class="mb-3">
+                    <label for="emailCandidato" class="form-label">Email:</label>
+                    <input type="email" id="emailCandidato" class="form-control"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cpfCandidato" class="form-label">CPF:</label>
+                    <input type="text" id="cpfCandidato" class="form-control" />
+                </div>
+
+                <div class = "mb-3">
+                    <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimento" class = "form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="paisCandidato" class="form-label">País:</label>
+                    <input type="text" id="paisCandidato" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="cepCandidato" class="form-label">CEP:</label>
+                    <input type="text" id="cepCandidato" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="estadoCandidato" class="form-label">Estado:</label>
+                    <input type="text" id="estadoCandidato" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="descricaoCandidato" class="form-label">Informe aqui uma breve descrição sobre você: </label>
+                    <textarea class="form-control" id="descricaoCandidato" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="competenciasCandidato" class="form-label">Informe aqui suas competências e conhecimentos: </label>
+                    <textarea class="form-control" id="competenciasCandidato" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+
+                    <label for="inputPassword" class="col-form-label">Crie sua senha:</label>
+                    <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline">
+
+                </div>
+
+                <div class = "pb-3">
+                    <button id="cadastrarCandidato" class="btn btn-primary">Cadastrar Candidato</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class = "container" id = "divEmpresa">
+
+            <!-- Formulário de Empresa -->
+            <div id="formularioEmpresa" class="mt-4" style="display: none;">
+                <h3>Cadastro de Empresa</h3>
+                <div class="mb-3">
+                    <label for="nomeEmpresa" class="form-label">Nome da Empresa:</label>
+                    <input type="text" id="nomeEmpresa" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="emailEmpresa" class="form-label">Email da Empresa:</label>
+                    <input type="email" id="emailEmpresa" class="form-control" />
+                </div>
+                <button id="cadastrarEmpresa" class="btn btn-primary">Cadastrar Empresa</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="cadastro.js"></script> <!-- O arquivo TypeScript compilado -->
+</body>
+</html>

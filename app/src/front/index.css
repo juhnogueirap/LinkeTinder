@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #efefef;
+}
+
+
+.btn-lg {
+    margin: 0 10px;
+}
+
+.container {
+
+    display: flex; /* Torna o contêiner um flexbox */
+    flex-direction: column; /* Alinha os filhos em uma coluna */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100%;
+
+}
