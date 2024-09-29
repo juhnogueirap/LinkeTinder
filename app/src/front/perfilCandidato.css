@@ -18,3 +18,12 @@ img {
     height: 150px;
 }
 
+#mostrarVagasAll {
+
+/*    display: none;*/
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: white;
+
+}
+

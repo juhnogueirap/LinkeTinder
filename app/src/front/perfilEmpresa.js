@@ -1,3 +1,4 @@
+var _a;
 document.addEventListener('DOMContentLoaded', function () {
     carregarPerfilEmpresa();
 });
@@ -63,3 +64,29 @@ function mostrarPerfilCompletoEmpresa() {
         console.warn('Nenhum empresa encontrado no localStorage.');
     }
 }
+function salvarVaga() {
+    var nomeVaga = document.getElementById('nomeVaga').value;
+    var descricaoVaga = document.getElementById('descricaoVaga').value;
+    var areaAtuacaoVaga = document.getElementById('areaAtuacaoVaga').value;
+    var competenciasVaga = document.getElementById('competenciasVaga').value;
+    var jornadaVaga = document.getElementById('jornadaVaga').value;
+    var localidadeVaga = document.getElementById('localidadeVaga').value;
+    var salarioVaga = document.getElementById('salarioVaga').value;
+    var vaga = {
+        nomeVaga: nomeVaga,
+        descricaoVaga: descricaoVaga,
+        areaAtuacaoVaga: areaAtuacaoVaga,
+        competenciasVaga: competenciasVaga,
+        jornadaVaga: jornadaVaga,
+        localidadeVaga: localidadeVaga,
+        salarioVaga: salarioVaga
+    };
+    localStorage.setItem('vaga', JSON.stringify(vaga));
+    alert('Vaga cadastrada!');
+    window.location.href = 'perfilEmpresa.html';
+}
+document.getElementById('criarVagaLink').addEventListener('click', function (event) {
+    event.preventDefault();
+    document.getElementById('cadastroVaga').style.display = 'block';
+});
+(_a = document.getElementById('cadastrarVaga')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', salvarVaga);

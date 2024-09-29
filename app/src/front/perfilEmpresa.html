@@ -49,10 +49,60 @@
             <li class="nav-item">
                 <a class="nav-link py-4" href="#">Minhas curtidas</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link py-4" id= "criarVagaLink" href="#">Criar vaga</a>
+            </li>
         </ul>
 
     </div>
 </div>
+
+<div>
+    <div class = "container" id = "cadastroVaga">
+        <div id="formularioVaga" class="mt-4 w-100" >
+            <div class="mb-3">
+                <label for="nomeVaga" class="form-label">Nome da Vaga:</label>
+                <input type="text" id="nomeVaga" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="descricaoVaga" class="form-label">Descreva a vaga: </label>
+                <textarea class="form-control" id="descricaoVaga" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="areaAtuacaoVaga" class="form-label">Informe aqui as áreas de atuação da vaga: </label>
+                <textarea class="form-control" id="areaAtuacaoVaga" rows="3"></textarea>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="competenciasVaga" class="form-label">Informe aqui as competências e conhecimentos requisitados pela empresa: </label>
+                <textarea class="form-control" id="competenciasVaga" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="jornadaVaga" class="form-label">Tipo de Jornada</label>
+                <input type="text" id="jornadaVaga" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="localidadeVaga" class="form-label">Local da Vaga:</label>
+                <input type="text" id="localidadeVaga" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="salarioVaga" class="form-label">Salário:</label>
+                <input type="text" id="salarioVaga" class="form-control" />
+            </div>
+
+            <div class = "pb-3">
+                <button id="cadastrarVaga" class="btn btn-primary">Cadastrar Vaga</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 
     <script src="perfilEmpresa.js"></script>

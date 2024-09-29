@@ -10,6 +10,7 @@ function salvarCandidato(): void {
     const competencias = (document.getElementById('competenciasCandidato') as HTMLInputElement).value;
     const senha = (document.getElementById('inputPasswordCandidato') as HTMLInputElement).value;
     const senhaHash = btoa(senha);
+    const candidatoId = gerarIdAleatorio();
 
     const candidato = {
         nome,
@@ -21,6 +22,7 @@ function salvarCandidato(): void {
         estado,
         descricao,
         competencias,
+        candidatoId,
         senha: senhaHash
     };
 
@@ -43,6 +45,7 @@ function salvarEmpresa(): void {
     const competencias = (document.getElementById('competenciasEmpresa') as HTMLInputElement).value;
     const senha = (document.getElementById('inputPasswordEmpresa') as HTMLInputElement).value;
     const senhaHash = btoa(senha);
+    const empresaId = gerarIdAleatorio();
 
 
 
@@ -56,6 +59,7 @@ function salvarEmpresa(): void {
         estado,
         descricao,
         competencias,
+        empresaId,
         senha: senhaHash
     };
 
@@ -64,6 +68,11 @@ function salvarEmpresa(): void {
     alert('Empresa cadastrada!');
     //agora preciso encaminhar para a tela de login
 }
+
+function gerarIdAleatorio(): string {
+    return Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
+}
+
 
 
 document.getElementById('cadastrarCandidato')?.addEventListener('click', salvarCandidato);

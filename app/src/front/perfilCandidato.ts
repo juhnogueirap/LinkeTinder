@@ -79,6 +79,11 @@ function mostrarPerfilCompletoCandidato(): void {
     }
 }
 
+function mostrarVagasAll(){
+
+
+}
+
 
 
 
