@@ -30,49 +30,49 @@ function mostrarPerfilCompletoCandidato(): void {
     if (candidatoString) {
         const candidato = JSON.parse(candidatoString);
 
-        const nomeElem = document.getElementById('nomeCandidato');
-        if (nomeElem) {
-            nomeElem.innerText = candidato.nome;
+        const nomeCandidato = document.getElementById('nomeCandidato');
+        if (nomeCandidato) {
+            nomeCandidato.innerText = candidato.nome;
         }
 
-        const emailElem = document.getElementById('emailCandidato');
-        if (emailElem) {
-            emailElem.innerText = candidato.email;
+        const emailCandidato = document.getElementById('emailCandidato');
+        if (emailCandidato) {
+            emailCandidato.innerText = candidato.email;
         }
 
-        const cpfElem = document.getElementById('cpfCandidato');
-        if (cpfElem) {
-            cpfElem.innerText = candidato.cpf;
+        const cpfCandidato = document.getElementById('cpfCandidato');
+        if (cpfCandidato) {
+            cpfCandidato.innerText = candidato.cpf;
         }
 
-        const dataNascimentoElem = document.getElementById('dataNascimentoCandidato');
-        if (dataNascimentoElem) {
-            dataNascimentoElem.innerText = candidato.dataNascimento;
+        const dataNascimentoCandidato = document.getElementById('dataNascimentoCandidato');
+        if (dataNascimentoCandidato) {
+            dataNascimentoCandidato.innerText = candidato.dataNascimento;
         }
 
-        const paisElem = document.getElementById('paisCandidato');
-        if (paisElem) {
-            paisElem.innerText = candidato.pais;
+        const paisCandidato = document.getElementById('paisCandidato');
+        if (paisCandidato) {
+            paisCandidato.innerText = candidato.pais;
         }
 
-        const cepElem = document.getElementById('cepCandidato');
-        if (cepElem) {
-            cepElem.innerText = candidato.cep;
+        const cepCandidato = document.getElementById('cepCandidato');
+        if (cepCandidato) {
+            cepCandidato.innerText = candidato.cep;
         }
 
-        const estadoElem = document.getElementById('estadoCandidato');
-        if (estadoElem) {
-            estadoElem.innerText = candidato.estado;
+        const estadoCandidato = document.getElementById('estadoCandidato');
+        if (estadoCandidato) {
+            estadoCandidato.innerText = candidato.estado;
         }
 
-        const descricaoElem = document.getElementById('descricaoCandidato');
-        if (descricaoElem) {
-            descricaoElem.innerText = candidato.descricao;
+        const descricaoCandidato = document.getElementById('descricaoCandidato');
+        if (descricaoCandidato) {
+            descricaoCandidato.innerText = candidato.descricao;
         }
 
-        const competenciasElem = document.getElementById('competenciasCandidato');
-        if (competenciasElem) {
-            competenciasElem.innerText = candidato.competencias;
+        const competenciasCandidato = document.getElementById('competenciasCandidato');
+        if (competenciasCandidato) {
+            competenciasCandidato.innerText = candidato.competencias;
         }
     } else {
         console.warn('Nenhum candidato encontrado no localStorage.');

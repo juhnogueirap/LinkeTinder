@@ -1,0 +1,20 @@
+body {
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Faz com que o body ocupe 100% da altura da viewport */
+
+    background-color: #efefef;
+}
+
+.container {
+    text-align: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    justify-items: center;
+
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+
