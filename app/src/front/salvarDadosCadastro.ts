@@ -8,6 +8,7 @@ function salvarCandidato(): void {
     const estado = (document.getElementById('estadoCandidato') as HTMLInputElement).value;
     const descricao = (document.getElementById('descricaoCandidato') as HTMLInputElement).value;
     const competencias = (document.getElementById('competenciasCandidato') as HTMLInputElement).value;
+    const formacao = (document.getElementById('formacaoCandidato') as HTMLInputElement).value;
     const senha = (document.getElementById('inputPasswordCandidato') as HTMLInputElement).value;
     const senhaHash = btoa(senha);
     const candidatoId = gerarIdAleatorio();
@@ -22,14 +23,19 @@ function salvarCandidato(): void {
         estado,
         descricao,
         competencias,
+        formacao,
         candidatoId,
         senha: senhaHash
     };
 
-    localStorage.setItem('candidato', JSON.stringify(candidato));
+    const candidatosString = localStorage.getItem('candidatos');
+    const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
+
+
+    candidatos.push(candidato);
+    localStorage.setItem('candidatos', JSON.stringify(candidatos));
 
     alert('Candidato cadastrado!');
-    //agora preciso encaminhar para a tela de login
 }
 
 

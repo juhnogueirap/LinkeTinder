@@ -7,19 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function carregarPerfilCandidato(): void {
 
-    const candidatoString = localStorage.getItem('candidato');
+    const candidatosString = localStorage.getItem('candidatos');
 
-    if (candidatoString) {
-        const candidato = JSON.parse(candidatoString);
+    if (candidatosString) {
+        const candidatos = JSON.parse(candidatosString);
+        const primeiroCandidato = candidatos[0];
 
         const nomeCandidato = document.getElementById('nomeCandidato');
         if (nomeCandidato) {
-            nomeCandidato.innerText = candidato.nome;
+            nomeCandidato.innerText = primeiroCandidato.nome;
         }
 
         const descricaoCandidato = document.getElementById('descricaoCandidato');
         if (descricaoCandidato) {
-            descricaoCandidato.innerText = candidato.descricao;
+            descricaoCandidato.innerText = primeiroCandidato.descricao;
         }
 
     } else {
@@ -76,6 +77,10 @@ function mostrarPerfilCompletoCandidato(): void {
         const competenciasCandidato = document.getElementById('competenciasCandidato');
         if (competenciasCandidato) {
             competenciasCandidato.innerText = candidato.competencias;
+        }
+        const formacaoCandidato = document.getElementById('formacaoCandidato');
+        if (formacaoCandidato) {
+            formacaoCandidato.innerText = candidato.competencias;
         }
     } else {
         console.warn('Nenhum candidato encontrado no localStorage.');

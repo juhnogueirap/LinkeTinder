@@ -25,9 +25,11 @@ function salvarCandidato() {
         candidatoId: candidatoId,
         senha: senhaHash
     };
-    localStorage.setItem('candidato', JSON.stringify(candidato));
+    var candidatosString = localStorage.getItem('candidatos');
+    var candidatos = candidatosString ? JSON.parse(candidatosString) : [];
+    candidatos.push(candidato);
+    localStorage.setItem('candidatos', JSON.stringify(candidatos));
     alert('Candidato cadastrado!');
-    //agora preciso encaminhar para a tela de login
 }
 function salvarEmpresa() {
     var nome = document.getElementById('nomeEmpresa').value;

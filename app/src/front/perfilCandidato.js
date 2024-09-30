@@ -4,16 +4,17 @@ document.addEventListener('DOMContentLoaded', function () {
     (_a = document.getElementById('vagasAll')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', mostrarVagasAll);
 });
 function carregarPerfilCandidato() {
-    var candidatoString = localStorage.getItem('candidato');
-    if (candidatoString) {
-        var candidato = JSON.parse(candidatoString);
+    var candidatosString = localStorage.getItem('candidatos');
+    if (candidatosString) {
+        var candidatos = JSON.parse(candidatosString);
+        var primeiroCandidato = candidatos[0];
         var nomeCandidato = document.getElementById('nomeCandidato');
         if (nomeCandidato) {
-            nomeCandidato.innerText = candidato.nome;
+            nomeCandidato.innerText = primeiroCandidato.nome;
         }
         var descricaoCandidato = document.getElementById('descricaoCandidato');
         if (descricaoCandidato) {
-            descricaoCandidato.innerText = candidato.descricao;
+            descricaoCandidato.innerText = primeiroCandidato.descricao;
         }
     }
     else {
@@ -59,6 +60,10 @@ function mostrarPerfilCompletoCandidato() {
         var competenciasCandidato = document.getElementById('competenciasCandidato');
         if (competenciasCandidato) {
             competenciasCandidato.innerText = candidato.competencias;
+        }
+        var formacaoCandidato = document.getElementById('formacaoCandidato');
+        if (formacaoCandidato) {
+            formacaoCandidato.innerText = candidato.competencias;
         }
     }
     else {

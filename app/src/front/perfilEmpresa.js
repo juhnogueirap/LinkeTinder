@@ -1,6 +1,8 @@
 var _a;
 document.addEventListener('DOMContentLoaded', function () {
+    var _a;
     carregarPerfilEmpresa();
+    (_a = document.getElementById('candidatosAll')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', mostrarCandidatosAll);
 });
 function carregarPerfilEmpresa() {
     var empresaString = localStorage.getItem('empresa');
@@ -86,6 +88,20 @@ function salvarVaga() {
     localStorage.setItem('vagas', JSON.stringify(vagas));
     alert('Vaga cadastrada!');
     window.location.href = 'perfilEmpresa.html';
+}
+function mostrarCandidatosAll() {
+    var candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
+    var candidatosContainer = document.getElementById('mostrarCandidatosAll');
+    var cardEmpresaTemplate = document.getElementById('cardEmpresaTemplate');
+    candidatosContainer.innerHTML = '';
+    candidatosContainer.style.display = 'block';
+    candidatos.forEach(function (candidato) {
+        var cardClone = cardEmpresaTemplate.content.cloneNode(true);
+        cardClone.querySelector('.card-title').textContent = "Forma\u00E7\u00E3o: ".concat(candidato.formacao);
+        cardClone.querySelector('.card-subtitle').textContent = "Compet\u00EAncias: ".concat(candidato.competencias);
+        cardClone.querySelector('.card-text').textContent = "Descri\u00E7\u00E3o: ".concat(candidato.descricao);
+        candidatosContainer.appendChild(cardClone);
+    });
 }
 document.getElementById('criarVagaLink').addEventListener('click', function (event) {
     event.preventDefault();
