@@ -1,18 +1,20 @@
 var _a;
+import ApexCharts from 'apexcharts';
 document.addEventListener('DOMContentLoaded', function () {
-    var _a;
+    var _a, _b;
     carregarPerfilEmpresa();
     (_a = document.getElementById('candidatosAll')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', mostrarCandidatosAll);
+    (_b = document.getElementById('mostrarGraficoLink')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', mostrarGraficoCompetencias);
 });
 function carregarPerfilEmpresa() {
-    var empresaString = localStorage.getItem('empresa');
+    const empresaString = localStorage.getItem('empresa');
     if (empresaString) {
-        var empresa = JSON.parse(empresaString);
-        var nomeEmpresa = document.getElementById('nomeEmpresa');
+        const empresa = JSON.parse(empresaString);
+        const nomeEmpresa = document.getElementById('nomeEmpresa');
         if (nomeEmpresa) {
             nomeEmpresa.innerText = empresa.nome;
         }
-        var descricaoEmpresa = document.getElementById('descricaoEmpresa');
+        const descricaoEmpresa = document.getElementById('descricaoEmpresa');
         if (descricaoEmpresa) {
             descricaoEmpresa.innerText = empresa.descricao;
         }
@@ -22,42 +24,42 @@ function carregarPerfilEmpresa() {
     }
 }
 function mostrarPerfilCompletoEmpresa() {
-    var empresaString = localStorage.getItem('empresa');
+    const empresaString = localStorage.getItem('empresa');
     if (empresaString) {
-        var empresa = JSON.parse(empresaString);
-        var nomeEmpresa = document.getElementById('nomeEmpresa');
+        const empresa = JSON.parse(empresaString);
+        const nomeEmpresa = document.getElementById('nomeEmpresa');
         if (nomeEmpresa) {
             nomeEmpresa.innerText = empresa.nome;
         }
-        var emailEmpresa = document.getElementById('emailEmpresa');
+        const emailEmpresa = document.getElementById('emailEmpresa');
         if (emailEmpresa) {
             emailEmpresa.innerText = empresa.email;
         }
-        var cnpjEmpresa = document.getElementById('cnpjEmpresa');
+        const cnpjEmpresa = document.getElementById('cnpjEmpresa');
         if (cnpjEmpresa) {
             cnpjEmpresa.innerText = empresa.cpf;
         }
-        var dataFundEmpresa = document.getElementById('dataFundacao');
+        const dataFundEmpresa = document.getElementById('dataFundacao');
         if (dataFundEmpresa) {
             dataFundEmpresa.innerText = empresa.dataNascimento;
         }
-        var paisEmpresa = document.getElementById('paisEmpresa');
+        const paisEmpresa = document.getElementById('paisEmpresa');
         if (paisEmpresa) {
             paisEmpresa.innerText = empresa.pais;
         }
-        var cepEmpresa = document.getElementById('cepEmpresa');
+        const cepEmpresa = document.getElementById('cepEmpresa');
         if (cepEmpresa) {
             cepEmpresa.innerText = empresa.cep;
         }
-        var estadoEmpresa = document.getElementById('estadoEmpresa');
+        const estadoEmpresa = document.getElementById('estadoEmpresa');
         if (estadoEmpresa) {
             estadoEmpresa.innerText = empresa.estado;
         }
-        var descricaoEmpresa = document.getElementById('descricaoEmpresa');
+        const descricaoEmpresa = document.getElementById('descricaoEmpresa');
         if (descricaoEmpresa) {
             descricaoEmpresa.innerText = empresa.descricao;
         }
-        var competenciasEmpresa = document.getElementById('competenciasEmpresa');
+        const competenciasEmpresa = document.getElementById('competenciasEmpresa');
         if (competenciasEmpresa) {
             competenciasEmpresa.innerText = empresa.competencias;
         }
@@ -67,41 +69,92 @@ function mostrarPerfilCompletoEmpresa() {
     }
 }
 function salvarVaga() {
-    var nomeVaga = document.getElementById('nomeVaga').value;
-    var descricaoVaga = document.getElementById('descricaoVaga').value;
-    var areaAtuacaoVaga = document.getElementById('areaAtuacaoVaga').value;
-    var competenciasVaga = document.getElementById('competenciasVaga').value;
-    var jornadaVaga = document.getElementById('jornadaVaga').value;
-    var localidadeVaga = document.getElementById('localidadeVaga').value;
-    var salarioVaga = document.getElementById('salarioVaga').value;
-    var vaga = {
-        nomeVaga: nomeVaga,
-        descricaoVaga: descricaoVaga,
-        areaAtuacaoVaga: areaAtuacaoVaga,
-        competenciasVaga: competenciasVaga,
-        jornadaVaga: jornadaVaga,
-        localidadeVaga: localidadeVaga,
-        salarioVaga: salarioVaga
+    const nomeVaga = document.getElementById('nomeVaga').value;
+    const descricaoVaga = document.getElementById('descricaoVaga').value;
+    const areaAtuacaoVaga = document.getElementById('areaAtuacaoVaga').value;
+    const competenciasVaga = document.getElementById('competenciasVaga').value;
+    const jornadaVaga = document.getElementById('jornadaVaga').value;
+    const localidadeVaga = document.getElementById('localidadeVaga').value;
+    const salarioVaga = document.getElementById('salarioVaga').value;
+    const vaga = {
+        nomeVaga,
+        descricaoVaga,
+        areaAtuacaoVaga,
+        competenciasVaga,
+        jornadaVaga,
+        localidadeVaga,
+        salarioVaga
     };
-    var vagas = JSON.parse(localStorage.getItem('vagas') || '[]');
+    let vagas = JSON.parse(localStorage.getItem('vagas') || '[]');
     vagas.push(vaga);
     localStorage.setItem('vagas', JSON.stringify(vagas));
     alert('Vaga cadastrada!');
     window.location.href = 'perfilEmpresa.html';
 }
 function mostrarCandidatosAll() {
-    var candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
-    var candidatosContainer = document.getElementById('mostrarCandidatosAll');
-    var cardEmpresaTemplate = document.getElementById('cardEmpresaTemplate');
+    let candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
+    let candidatosContainer = document.getElementById('mostrarCandidatosAll');
+    const cardEmpresaTemplate = document.getElementById('cardEmpresaTemplate');
     candidatosContainer.innerHTML = '';
     candidatosContainer.style.display = 'block';
-    candidatos.forEach(function (candidato) {
-        var cardClone = cardEmpresaTemplate.content.cloneNode(true);
-        cardClone.querySelector('.card-title').textContent = "Forma\u00E7\u00E3o: ".concat(candidato.formacao);
-        cardClone.querySelector('.card-subtitle').textContent = "Compet\u00EAncias: ".concat(candidato.competencias);
-        cardClone.querySelector('.card-text').textContent = "Descri\u00E7\u00E3o: ".concat(candidato.descricao);
+    candidatos.forEach(candidato => {
+        let cardClone = cardEmpresaTemplate.content.cloneNode(true);
+        cardClone.querySelector('.card-title').textContent = `Formação: ${candidato.formacao}`;
+        cardClone.querySelector('.card-subtitle').textContent = `Competências: ${candidato.competencias}`;
+        cardClone.querySelector('.card-text').textContent = `Descrição: ${candidato.descricao}`;
         candidatosContainer.appendChild(cardClone);
     });
+}
+async function mostrarGraficoCompetencias(event) {
+    // Previne a ação padrão do evento, caso necessário
+    event.preventDefault();
+    // Obtém os candidatos do localStorage
+    const candidatosString = localStorage.getItem('candidatos');
+    const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
+    // Conta as competências
+    const competenciasCount = {};
+    candidatos.forEach((candidato) => {
+        const competencias = candidato.competencias.split(','); // Supondo que as competências sejam uma string separada por vírgulas
+        competencias.forEach((competencia) => {
+            const trimmedCompetencia = competencia.trim();
+            if (competenciasCount[trimmedCompetencia]) {
+                competenciasCount[trimmedCompetencia]++;
+            }
+            else {
+                competenciasCount[trimmedCompetencia] = 1;
+            }
+        });
+    });
+    // Prepara os dados para o gráfico
+    const labels = Object.keys(competenciasCount);
+    const data = Object.values(competenciasCount);
+    // Configuração do gráfico
+    const options = {
+        chart: {
+            type: 'bar',
+            height: 350,
+        },
+        series: [{
+                name: 'Número de Candidatos',
+                data: data
+            }],
+        xaxis: {
+            categories: labels,
+        },
+        title: {
+            text: 'Distribuição de Competências dos Candidatos',
+            align: 'center',
+        }
+    };
+    const graficoElement = document.getElementById('graficoCompetencias');
+    // Verifica se o elemento existe antes de criar o gráfico
+    if (graficoElement) {
+        const chart = new ApexCharts(graficoElement, options);
+        await chart.render();
+    }
+    else {
+        console.error("Elemento 'graficoCompetencias' não encontrado.");
+    }
 }
 document.getElementById('criarVagaLink').addEventListener('click', function (event) {
     event.preventDefault();

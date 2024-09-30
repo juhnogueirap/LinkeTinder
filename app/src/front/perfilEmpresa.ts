@@ -1,6 +1,10 @@
+import ApexCharts from 'apexcharts';
+
 document.addEventListener('DOMContentLoaded', function() {
     carregarPerfilEmpresa();
     document.getElementById('candidatosAll')?.addEventListener('click', mostrarCandidatosAll);
+    document.getElementById('mostrarGraficoLink')?.addEventListener('click', mostrarGraficoCompetencias );
+
 });
 
 function carregarPerfilEmpresa(): void {
@@ -133,6 +137,55 @@ function mostrarCandidatosAll(){
     });
 }
 
+async function mostrarGraficoCompetencias(event: MouseEvent): Promise<void> {
+    event.preventDefault();
+    const candidatosString = localStorage.getItem('candidatos');
+    const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
+    const competenciasCount: { [key: string]: number } = {};
+
+    candidatos.forEach((candidato: any) => {
+        const competencias = candidato.competencias.split(',');
+        competencias.forEach((competencia: string) => {
+            const trimmedCompetencia = competencia.trim();
+            if (competenciasCount[trimmedCompetencia]) {
+                competenciasCount[trimmedCompetencia]++;
+            } else {
+                competenciasCount[trimmedCompetencia] = 1;
+            }
+        });
+    });
+
+    const labels = Object.keys(competenciasCount);
+    const data = Object.values(competenciasCount);
+
+    const options = {
+        chart: {
+            type: 'bar',
+            height: 350,
+        },
+        series: [{
+            name: 'Número de Candidatos',
+            data: data
+        }],
+        xaxis: {
+            categories: labels,
+        },
+        title: {
+            text: 'Distribuição de Competências dos Candidatos',
+            align: 'center',
+        }
+    };
+
+    const graficoElement = document.getElementById('graficoCompetencias');
+
+    if (graficoElement) {
+        const chart = new ApexCharts(graficoElement, options);
+        await chart.render();
+    } else {
+        console.error("Elemento 'graficoCompetencias' não encontrado.");
+    }
+
+}
 
 document.getElementById('criarVagaLink')!.addEventListener('click', function(event) {
     event.preventDefault();

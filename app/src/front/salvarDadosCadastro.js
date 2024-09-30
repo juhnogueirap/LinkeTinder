@@ -1,60 +1,63 @@
+"use strict";
 var _a, _b;
 function salvarCandidato() {
-    var nome = document.getElementById('nomeCandidato').value;
-    var email = document.getElementById('emailCandidato').value;
-    var cpf = document.getElementById('cpfCandidato').value;
-    var dataNascimento = document.getElementById('dataNascimento').value;
-    var pais = document.getElementById('paisCandidato').value;
-    var cep = document.getElementById('cepCandidato').value;
-    var estado = document.getElementById('estadoCandidato').value;
-    var descricao = document.getElementById('descricaoCandidato').value;
-    var competencias = document.getElementById('competenciasCandidato').value;
-    var senha = document.getElementById('inputPasswordCandidato').value;
-    var senhaHash = btoa(senha);
-    var candidatoId = gerarIdAleatorio();
-    var candidato = {
-        nome: nome,
-        email: email,
-        cpf: cpf,
-        dataNascimento: dataNascimento,
-        pais: pais,
-        cep: cep,
-        estado: estado,
-        descricao: descricao,
-        competencias: competencias,
-        candidatoId: candidatoId,
+    const nome = document.getElementById('nomeCandidato').value;
+    const email = document.getElementById('emailCandidato').value;
+    const cpf = document.getElementById('cpfCandidato').value;
+    const dataNascimento = document.getElementById('dataNascimento').value;
+    const pais = document.getElementById('paisCandidato').value;
+    const cep = document.getElementById('cepCandidato').value;
+    const estado = document.getElementById('estadoCandidato').value;
+    const descricao = document.getElementById('descricaoCandidato').value;
+    const competencias = document.getElementById('competenciasCandidato').value;
+    const formacao = document.getElementById('formacaoCandidato').value;
+    const senha = document.getElementById('inputPasswordCandidato').value;
+    const senhaHash = btoa(senha);
+    const candidatoId = gerarIdAleatorio();
+    const candidato = {
+        nome,
+        email,
+        cpf,
+        dataNascimento,
+        pais,
+        cep,
+        estado,
+        descricao,
+        competencias,
+        formacao,
+        candidatoId,
         senha: senhaHash
     };
-    var candidatosString = localStorage.getItem('candidatos');
-    var candidatos = candidatosString ? JSON.parse(candidatosString) : [];
+    const candidatosString = localStorage.getItem('candidatos');
+    const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
     candidatos.push(candidato);
     localStorage.setItem('candidatos', JSON.stringify(candidatos));
     alert('Candidato cadastrado!');
 }
 function salvarEmpresa() {
-    var nome = document.getElementById('nomeEmpresa').value;
-    var email = document.getElementById('emailEmpresa').value;
-    var cnpj = document.getElementById('cnpjEmpresa').value;
-    var dataFundacao = document.getElementById('dataFundacao').value;
-    var pais = document.getElementById('paisEmpresa').value;
-    var cep = document.getElementById('cepEmpresa').value;
-    var estado = document.getElementById('estadoEmpresa').value;
-    var descricao = document.getElementById('descricaoEmpresa').value;
-    var competencias = document.getElementById('competenciasEmpresa').value;
-    var senha = document.getElementById('inputPasswordEmpresa').value;
-    var senhaHash = btoa(senha);
-    var empresaId = gerarIdAleatorio();
-    var empresa = {
-        nome: nome,
-        email: email,
-        cnpj: cnpj,
-        dataFundacao: dataFundacao,
-        pais: pais,
-        cep: cep,
-        estado: estado,
-        descricao: descricao,
-        competencias: competencias,
-        empresaId: empresaId,
+    const nome = document.getElementById('nomeEmpresa').value;
+    const email = document.getElementById('emailEmpresa').value;
+    const cnpj = document.getElementById('cnpjEmpresa').value;
+    const dataFundacao = document.getElementById('dataFundacao').value;
+    const pais = document.getElementById('paisEmpresa').value;
+    const cep = document.getElementById('cepEmpresa').value;
+    const estado = document.getElementById('estadoEmpresa').value;
+    const descricao = document.getElementById('descricaoEmpresa').value;
+    const competencias = document.getElementById('competenciasEmpresa').value;
+    const senha = document.getElementById('inputPasswordEmpresa').value;
+    const senhaHash = btoa(senha);
+    const empresaId = gerarIdAleatorio();
+    const empresa = {
+        nome,
+        email,
+        cnpj,
+        dataFundacao,
+        pais,
+        cep,
+        estado,
+        descricao,
+        competencias,
+        empresaId,
         senha: senhaHash
     };
     localStorage.setItem('empresa', JSON.stringify(empresa));

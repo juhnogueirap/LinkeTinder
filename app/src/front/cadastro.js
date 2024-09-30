@@ -1,11 +1,12 @@
+"use strict";
 var _a, _b;
 function toggleFormularios() {
-    var radioCandidato = document.getElementById('radioCandidato');
-    var radioEmpresa = document.getElementById('radioEmpresa');
-    var formularioCandidato = document.getElementById('formularioCandidato');
-    var formularioEmpresa = document.getElementById('formularioEmpresa');
-    var divEmpresa = document.getElementById('divEmpresa');
-    var divCandidato = document.getElementById('divCandidato');
+    const radioCandidato = document.getElementById('radioCandidato');
+    const radioEmpresa = document.getElementById('radioEmpresa');
+    const formularioCandidato = document.getElementById('formularioCandidato');
+    const formularioEmpresa = document.getElementById('formularioEmpresa');
+    const divEmpresa = document.getElementById('divEmpresa');
+    const divCandidato = document.getElementById('divCandidato');
     divCandidato.style.display = 'block';
     divEmpresa.style.display = 'block';
     if (radioCandidato.checked) {
