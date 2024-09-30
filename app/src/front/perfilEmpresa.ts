@@ -103,10 +103,11 @@ function salvarVaga(): void{
         salarioVaga
     };
 
-    localStorage.setItem('vaga', JSON.stringify(vaga));
+    let vagas = JSON.parse(localStorage.getItem('vagas') || '[]');
+    vagas.push(vaga);
+    localStorage.setItem('vagas', JSON.stringify(vagas));
 
     alert('Vaga cadastrada!');
-
     window.location.href = 'perfilEmpresa.html';
 }
 

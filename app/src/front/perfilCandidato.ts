@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     carregarPerfilCandidato();
+    document.getElementById('vagasAll')?.addEventListener('click', mostrarVagasAll);
 });
+
+
 
 function carregarPerfilCandidato(): void {
 
@@ -81,9 +84,24 @@ function mostrarPerfilCompletoCandidato(): void {
 
 function mostrarVagasAll(){
 
+    let vagas: any[] = JSON.parse(localStorage.getItem('vagas') || '[]');
+    let vagasContainer = document.getElementById('mostrarVagasAll') as HTMLElement;
+    const cardTemplate = document.getElementById('cardTemplate') as HTMLTemplateElement;
 
+    vagasContainer.innerHTML = '';
+    vagasContainer.style.display = 'block';
+
+    vagas.forEach(vaga => {
+        let cardClone = cardTemplate.content.cloneNode(true) as HTMLElement;
+
+        (cardClone.querySelector('.card-title') as HTMLElement).textContent = vaga.nomeVaga;
+        (cardClone.querySelector('.card-subtitle') as HTMLElement).textContent = `Área de Atuação: ${vaga.areaAtuacaoVaga}`;
+        (cardClone.querySelector('.card-text') as HTMLElement).textContent = vaga.descricaoVaga;
+        (cardClone.querySelector('.text-muted') as HTMLElement).textContent = `Localidade: ${vaga.localidadeVaga}`;
+
+        vagasContainer.appendChild(cardClone);
+    });
 }
-
 
 
 

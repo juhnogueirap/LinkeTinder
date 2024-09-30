@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    var _a;
     carregarPerfilCandidato();
+    (_a = document.getElementById('vagasAll')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', mostrarVagasAll);
 });
 function carregarPerfilCandidato() {
     var candidatoString = localStorage.getItem('candidato');
@@ -22,44 +24,59 @@ function mostrarPerfilCompletoCandidato() {
     var candidatoString = localStorage.getItem('candidato');
     if (candidatoString) {
         var candidato = JSON.parse(candidatoString);
-        var nomeElem = document.getElementById('nomeCandidato');
-        if (nomeElem) {
-            nomeElem.innerText = candidato.nome;
+        var nomeCandidato = document.getElementById('nomeCandidato');
+        if (nomeCandidato) {
+            nomeCandidato.innerText = candidato.nome;
         }
-        var emailElem = document.getElementById('emailCandidato');
-        if (emailElem) {
-            emailElem.innerText = candidato.email;
+        var emailCandidato = document.getElementById('emailCandidato');
+        if (emailCandidato) {
+            emailCandidato.innerText = candidato.email;
         }
-        var cpfElem = document.getElementById('cpfCandidato');
-        if (cpfElem) {
-            cpfElem.innerText = candidato.cpf;
+        var cpfCandidato = document.getElementById('cpfCandidato');
+        if (cpfCandidato) {
+            cpfCandidato.innerText = candidato.cpf;
         }
-        var dataNascimentoElem = document.getElementById('dataNascimentoCandidato');
-        if (dataNascimentoElem) {
-            dataNascimentoElem.innerText = candidato.dataNascimento;
+        var dataNascimentoCandidato = document.getElementById('dataNascimentoCandidato');
+        if (dataNascimentoCandidato) {
+            dataNascimentoCandidato.innerText = candidato.dataNascimento;
         }
-        var paisElem = document.getElementById('paisCandidato');
-        if (paisElem) {
-            paisElem.innerText = candidato.pais;
+        var paisCandidato = document.getElementById('paisCandidato');
+        if (paisCandidato) {
+            paisCandidato.innerText = candidato.pais;
         }
-        var cepElem = document.getElementById('cepCandidato');
-        if (cepElem) {
-            cepElem.innerText = candidato.cep;
+        var cepCandidato = document.getElementById('cepCandidato');
+        if (cepCandidato) {
+            cepCandidato.innerText = candidato.cep;
         }
-        var estadoElem = document.getElementById('estadoCandidato');
-        if (estadoElem) {
-            estadoElem.innerText = candidato.estado;
+        var estadoCandidato = document.getElementById('estadoCandidato');
+        if (estadoCandidato) {
+            estadoCandidato.innerText = candidato.estado;
         }
-        var descricaoElem = document.getElementById('descricaoCandidato');
-        if (descricaoElem) {
-            descricaoElem.innerText = candidato.descricao;
+        var descricaoCandidato = document.getElementById('descricaoCandidato');
+        if (descricaoCandidato) {
+            descricaoCandidato.innerText = candidato.descricao;
         }
-        var competenciasElem = document.getElementById('competenciasCandidato');
-        if (competenciasElem) {
-            competenciasElem.innerText = candidato.competencias;
+        var competenciasCandidato = document.getElementById('competenciasCandidato');
+        if (competenciasCandidato) {
+            competenciasCandidato.innerText = candidato.competencias;
         }
     }
     else {
         console.warn('Nenhum candidato encontrado no localStorage.');
     }
+}
+function mostrarVagasAll() {
+    var vagas = JSON.parse(localStorage.getItem('vagas') || '[]');
+    var vagasContainer = document.getElementById('mostrarVagasAll');
+    var cardTemplate = document.getElementById('cardTemplate');
+    vagasContainer.innerHTML = '';
+    vagasContainer.style.display = 'block';
+    vagas.forEach(function (vaga) {
+        var cardClone = cardTemplate.content.cloneNode(true);
+        cardClone.querySelector('.card-title').textContent = vaga.nomeVaga;
+        cardClone.querySelector('.card-subtitle').textContent = "\u00C1rea de Atua\u00E7\u00E3o: ".concat(vaga.areaAtuacaoVaga);
+        cardClone.querySelector('.card-text').textContent = vaga.descricaoVaga;
+        cardClone.querySelector('.text-muted').textContent = "Localidade: ".concat(vaga.localidadeVaga);
+        vagasContainer.appendChild(cardClone);
+    });
 }

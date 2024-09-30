@@ -41,7 +41,7 @@
             <a class="nav-link py-4 active" href="#">Procurar vagas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link py-4" href="#">Todas as vagas</a>
+            <a class="nav-link py-4" id = "vagasAll" href="#">Todas as vagas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link py-4" href="#">Meus matches</a>
@@ -53,13 +53,24 @@
     </div>
 </div>
 
-<div>
+<div style="padding-bottom: 60px">
     <div class="container" id="mostrarVagasAll">
-        <h1> AQUI SERÁ O ESPAÇO ONDE APARECERÁ A LISTA DE VAGAS</A></h1>
+
     </div>
 
-
 </div>
+
+<template id="cardTemplate">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text"></p>
+            <p class="card-text"><small class="text-muted"></small></p>
+            <a href="#" class="btn btn-primary">Ver mais</a>
+        </div>
+    </div>
+</template>
 
 
 
