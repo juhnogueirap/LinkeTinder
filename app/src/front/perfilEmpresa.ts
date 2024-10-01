@@ -1,3 +1,8 @@
+import { Chart } from 'chart.js';
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     carregarPerfilEmpresa();
     document.getElementById('candidatosAll')?.addEventListener('click', mostrarCandidatosAll);
@@ -140,3 +145,5 @@ document.getElementById('criarVagaLink')!.addEventListener('click', function(eve
 });
 
 document.getElementById('cadastrarVaga')?.addEventListener('click', salvarVaga);
+
+export { };
