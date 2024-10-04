@@ -95,11 +95,12 @@ function mostrarGraficoCompetencias() {
         grafico = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: Object.keys(competenciasCount),
                 datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        borderWidth: 1
+                        label: 'Quantidade de candidatos',
+                        data: Object.values(competenciasCount),
+                        borderWidth: 0.5,
+                        barThickness: 40
                     }]
             }
         });
