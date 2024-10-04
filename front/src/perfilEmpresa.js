@@ -1,5 +1,5 @@
+"use strict";
 var _a;
-import ApexCharts from 'apexcharts';
 document.addEventListener('DOMContentLoaded', function () {
     var _a, _b;
     carregarPerfilEmpresa();
@@ -105,16 +105,12 @@ function mostrarCandidatosAll() {
         candidatosContainer.appendChild(cardClone);
     });
 }
-async function mostrarGraficoCompetencias(event) {
-    // Previne a ação padrão do evento, caso necessário
-    event.preventDefault();
-    // Obtém os candidatos do localStorage
+function mostrarGraficoCompetencias() {
     const candidatosString = localStorage.getItem('candidatos');
     const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
-    // Conta as competências
     const competenciasCount = {};
     candidatos.forEach((candidato) => {
-        const competencias = candidato.competencias.split(','); // Supondo que as competências sejam uma string separada por vírgulas
+        const competencias = candidato.competencias.split(',');
         competencias.forEach((competencia) => {
             const trimmedCompetencia = competencia.trim();
             if (competenciasCount[trimmedCompetencia]) {
@@ -125,32 +121,22 @@ async function mostrarGraficoCompetencias(event) {
             }
         });
     });
-    // Prepara os dados para o gráfico
     const labels = Object.keys(competenciasCount);
     const data = Object.values(competenciasCount);
-    // Configuração do gráfico
-    const options = {
-        chart: {
-            type: 'bar',
-            height: 350,
-        },
-        series: [{
-                name: 'Número de Candidatos',
-                data: data
-            }],
-        xaxis: {
-            categories: labels,
-        },
-        title: {
-            text: 'Distribuição de Competências dos Candidatos',
-            align: 'center',
-        }
-    };
     const graficoElement = document.getElementById('graficoCompetencias');
-    // Verifica se o elemento existe antes de criar o gráfico
     if (graficoElement) {
-        const chart = new ApexCharts(graficoElement, options);
-        await chart.render();
+        const chart = new Chart(graficoElement, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1
+                    }]
+            }
+        });
+        chart.render();
     }
     else {
         console.error("Elemento 'graficoCompetencias' não encontrado.");

@@ -1,5 +1,3 @@
-import ApexCharts from 'apexcharts';
-
 document.addEventListener('DOMContentLoaded', function() {
     carregarPerfilEmpresa();
     document.getElementById('candidatosAll')?.addEventListener('click', mostrarCandidatosAll);
@@ -137,8 +135,8 @@ function mostrarCandidatosAll(){
     });
 }
 
-async function mostrarGraficoCompetencias(event: MouseEvent): Promise<void> {
-    event.preventDefault();
+function mostrarGraficoCompetencias(): void{
+
     const candidatosString = localStorage.getItem('candidatos');
     const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
     const competenciasCount: { [key: string]: number } = {};
@@ -157,30 +155,22 @@ async function mostrarGraficoCompetencias(event: MouseEvent): Promise<void> {
 
     const labels = Object.keys(competenciasCount);
     const data = Object.values(competenciasCount);
-
-    const options = {
-        chart: {
-            type: 'bar',
-            height: 350,
-        },
-        series: [{
-            name: 'Número de Candidatos',
-            data: data
-        }],
-        xaxis: {
-            categories: labels,
-        },
-        title: {
-            text: 'Distribuição de Competências dos Candidatos',
-            align: 'center',
-        }
-    };
-
-    const graficoElement = document.getElementById('graficoCompetencias');
+    const graficoElement: any = document.getElementById('graficoCompetencias');
 
     if (graficoElement) {
-        const chart = new ApexCharts(graficoElement, options);
-        await chart.render();
+        const chart = new Chart(graficoElement, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            }
+
+        });
+        chart.render();
     } else {
         console.error("Elemento 'graficoCompetencias' não encontrado.");
     }
@@ -193,3 +183,4 @@ document.getElementById('criarVagaLink')!.addEventListener('click', function(eve
 });
 
 document.getElementById('cadastrarVaga')?.addEventListener('click', salvarVaga);
+
