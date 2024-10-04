@@ -1,10 +1,12 @@
 "use strict";
-var _a;
+let grafico;
 document.addEventListener('DOMContentLoaded', function () {
-    var _a, _b;
+    var _a, _b, _c;
     carregarPerfilEmpresa();
     (_a = document.getElementById('candidatosAll')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', mostrarCandidatosAll);
     (_b = document.getElementById('mostrarGraficoLink')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', mostrarGraficoCompetencias);
+    document.getElementById('criarVagaLink').addEventListener('click', mostrarFormularioVagas);
+    (_c = document.getElementById('cadastrarVaga')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', salvarVaga);
 });
 function carregarPerfilEmpresa() {
     const empresaString = localStorage.getItem('empresa');
@@ -23,50 +25,8 @@ function carregarPerfilEmpresa() {
         console.warn('Nenhum empresa encontrado no localStorage.');
     }
 }
-function mostrarPerfilCompletoEmpresa() {
-    const empresaString = localStorage.getItem('empresa');
-    if (empresaString) {
-        const empresa = JSON.parse(empresaString);
-        const nomeEmpresa = document.getElementById('nomeEmpresa');
-        if (nomeEmpresa) {
-            nomeEmpresa.innerText = empresa.nome;
-        }
-        const emailEmpresa = document.getElementById('emailEmpresa');
-        if (emailEmpresa) {
-            emailEmpresa.innerText = empresa.email;
-        }
-        const cnpjEmpresa = document.getElementById('cnpjEmpresa');
-        if (cnpjEmpresa) {
-            cnpjEmpresa.innerText = empresa.cpf;
-        }
-        const dataFundEmpresa = document.getElementById('dataFundacao');
-        if (dataFundEmpresa) {
-            dataFundEmpresa.innerText = empresa.dataNascimento;
-        }
-        const paisEmpresa = document.getElementById('paisEmpresa');
-        if (paisEmpresa) {
-            paisEmpresa.innerText = empresa.pais;
-        }
-        const cepEmpresa = document.getElementById('cepEmpresa');
-        if (cepEmpresa) {
-            cepEmpresa.innerText = empresa.cep;
-        }
-        const estadoEmpresa = document.getElementById('estadoEmpresa');
-        if (estadoEmpresa) {
-            estadoEmpresa.innerText = empresa.estado;
-        }
-        const descricaoEmpresa = document.getElementById('descricaoEmpresa');
-        if (descricaoEmpresa) {
-            descricaoEmpresa.innerText = empresa.descricao;
-        }
-        const competenciasEmpresa = document.getElementById('competenciasEmpresa');
-        if (competenciasEmpresa) {
-            competenciasEmpresa.innerText = empresa.competencias;
-        }
-    }
-    else {
-        console.warn('Nenhum empresa encontrado no localStorage.');
-    }
+function mostrarFormularioVagas() {
+    esconderDisplays('cadastroVaga');
 }
 function salvarVaga() {
     const nomeVaga = document.getElementById('nomeVaga').value;
@@ -92,6 +52,8 @@ function salvarVaga() {
     window.location.href = 'perfilEmpresa.html';
 }
 function mostrarCandidatosAll() {
+    esconderDisplays('mostrarCandidatosAll');
+    document.getElementById('mostrarCandidatosAll').style.display = 'block';
     let candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
     let candidatosContainer = document.getElementById('mostrarCandidatosAll');
     const cardEmpresaTemplate = document.getElementById('cardEmpresaTemplate');
@@ -106,6 +68,7 @@ function mostrarCandidatosAll() {
     });
 }
 function mostrarGraficoCompetencias() {
+    esconderDisplays('canvasGrafico');
     const candidatosString = localStorage.getItem('candidatos');
     const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
     const competenciasCount = {};
@@ -123,9 +86,13 @@ function mostrarGraficoCompetencias() {
     });
     const labels = Object.keys(competenciasCount);
     const data = Object.values(competenciasCount);
-    const graficoElement = document.getElementById('graficoCompetencias');
-    if (graficoElement) {
-        const chart = new Chart(graficoElement, {
+    const ctx = document.getElementById('graficoCompetencias');
+    if (grafico) {
+        grafico.destroy();
+    }
+    if (ctx) {
+        // @ts-ignore
+        grafico = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -136,14 +103,78 @@ function mostrarGraficoCompetencias() {
                     }]
             }
         });
-        chart.render();
+        grafico.render();
     }
     else {
-        console.error("Elemento 'graficoCompetencias' não encontrado.");
+        console.log('Ops, erro no gráfico!');
     }
 }
-document.getElementById('criarVagaLink').addEventListener('click', function (event) {
-    event.preventDefault();
-    document.getElementById('cadastroVaga').style.display = 'block';
-});
-(_a = document.getElementById('cadastrarVaga')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', salvarVaga);
+function esconderDisplays(idElementoExibido) {
+    const elementos = document.querySelectorAll('.elemento');
+    elementos.forEach(elemento => {
+        // @ts-ignore
+        if (elemento.id === idElementoExibido) {
+            // @ts-ignore
+            elemento.style.display = 'block';
+        }
+        else {
+            // @ts-ignore
+            elemento.style.display = 'none';
+        }
+    });
+}
+/*function mostrarPerfilCompletoEmpresa(): void {
+
+    const empresaString = localStorage.getItem('empresa');
+    if (empresaString) {
+
+        const empresa = JSON.parse(empresaString);
+        const nomeEmpresa = document.getElementById('nomeEmpresa');
+
+        if (nomeEmpresa) {
+            nomeEmpresa.innerText = empresa.nome;
+        }
+        const emailEmpresa = document.getElementById('emailEmpresa');
+
+        if (emailEmpresa) {
+            emailEmpresa.innerText = empresa.email;
+        }
+        const cnpjEmpresa = document.getElementById('cnpjEmpresa');
+
+        if (cnpjEmpresa) {
+            cnpjEmpresa.innerText = empresa.cpf;
+        }
+        const dataFundEmpresa = document.getElementById('dataFundacao');
+
+        if (dataFundEmpresa) {
+            dataFundEmpresa.innerText = empresa.dataNascimento;
+        }
+        const paisEmpresa = document.getElementById('paisEmpresa');
+
+        if (paisEmpresa) {
+            paisEmpresa.innerText = empresa.pais;
+        }
+        const cepEmpresa = document.getElementById('cepEmpresa');
+
+        if (cepEmpresa) {
+            cepEmpresa.innerText = empresa.cep;
+        }
+        const estadoEmpresa = document.getElementById('estadoEmpresa');
+
+        if (estadoEmpresa) {
+            estadoEmpresa.innerText = empresa.estado;
+        }
+        const descricaoEmpresa = document.getElementById('descricaoEmpresa');
+
+        if (descricaoEmpresa) {
+            descricaoEmpresa.innerText = empresa.descricao;
+        }
+        const competenciasEmpresa = document.getElementById('competenciasEmpresa');
+
+        if (competenciasEmpresa) {
+            competenciasEmpresa.innerText = empresa.competencias;
+        }
+    } else {
+        console.warn('Nenhum empresa encontrado no localStorage.');
+    }
+}*/

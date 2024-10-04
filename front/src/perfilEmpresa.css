@@ -22,3 +22,14 @@ img {
     display: none;
 }
 
+#mostrarCandidatosAll{
+    display: none;
+}
+
+.elemento{
+    text-align: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    justify-items: center;
+    display: none;
+
+}
