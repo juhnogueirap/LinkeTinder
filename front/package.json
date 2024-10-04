@@ -1,0 +1,30 @@
+{
+  "name": "linketinder",
+  "version": "1.0.0",
+  "description": "LinkeTinder é uma aplicação que mescla conceitos de duas plataformas conhecidas (LinkedIn e Tinder).  O LinkeTinder tem como objetivo disponibilizar um modelo de contratação baseado num \"match às cegas\". Inicialmente, os candidatos poderão favoritar a vaga que eles considerem apropriada ao perfil deles.",
+  "main": "index.js",
+  "directories": {
+    "lib": "../lib"
+  },
+  "scripts": {
+    "start": "../node_modules/.bin/live-server app/src/front",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juhnogueirap/LinkeTinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juhnogueirap/LinkeTinder/issues"
+  },
+  "homepage": "https://github.com/juhnogueirap/LinkeTinder#readme",
+  "dependencies": {
+    "@types/chart.js": "^2.9.41",
+    "chart.js": "^4.4.4",
+    "live-server": "^1.2.2",
+    "uuid": "^10.0.0"
+  }
+}
