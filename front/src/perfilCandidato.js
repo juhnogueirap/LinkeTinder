@@ -74,7 +74,7 @@ function mostrarPerfilCompletoCandidato() {
 function mostrarVagasAll() {
     let vagas = JSON.parse(localStorage.getItem('vagas') || '[]');
     let vagasContainer = document.getElementById('mostrarVagasAll');
-    const cardTemplate = document.getElementById('cardTemplate');
+    const cardTemplate = document.getElementById('cardVagaTemplate');
     vagasContainer.innerHTML = '';
     vagasContainer.style.display = 'block';
     vagas.forEach(vaga => {

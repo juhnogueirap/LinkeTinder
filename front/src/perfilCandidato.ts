@@ -91,7 +91,7 @@ function mostrarVagasAll(){
 
     let vagas: any[] = JSON.parse(localStorage.getItem('vagas') || '[]');
     let vagasContainer = document.getElementById('mostrarVagasAll') as HTMLElement;
-    const cardTemplate = document.getElementById('cardTemplate') as HTMLTemplateElement;
+    const cardTemplate = document.getElementById('cardVagaTemplate') as HTMLTemplateElement;
 
     vagasContainer.innerHTML = '';
     vagasContainer.style.display = 'block';
