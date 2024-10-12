@@ -31,56 +31,56 @@
             <div id="formularioCandidato" class="mt-4 w-100" >
                 <div class="mb-3">
                     <label for="nomeCandidato" class="form-label">Nome:</label>
-                    <input type="text" id="nomeCandidato" class="form-control"/>
+                    <input type="text" id="nomeCandidato" class="form-control" data-validate="nomeCand"/>
                 </div>
                 <div class="mb-3">
                     <label for="emailCandidato" class="form-label">Email:</label>
-                    <input type="email" id="emailCandidato" class="form-control"/>
+                    <input type="email" id="emailCandidato" class="form-control" data-validate="emailCand"/>
                 </div>
 
                 <div class="mb-3">
                     <label for="cpfCandidato" class="form-label">CPF:</label>
-                    <input type="text" id="cpfCandidato" class="form-control" />
+                    <input type="text" id="cpfCandidato" class="form-control" data-validate="cpfCand" />
                 </div>
 
                 <div class = "mb-3">
                     <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimento" class = "form-control">
+                    <input type="date" id="dataNascimento" class = "form-control" data-validate="dataNascimento">
                 </div>
 
                 <div class="mb-3">
                     <label for="paisCandidato" class="form-label">País:</label>
-                    <input type="text" id="paisCandidato" class="form-control" />
+                    <input type="text" id="paisCandidato" class="form-control" data-validate="paisCand" />
                 </div>
 
                 <div class="mb-3">
                     <label for="cepCandidato" class="form-label">CEP:</label>
-                    <input type="text" id="cepCandidato" class="form-control" />
+                    <input type="text" id="cepCandidato" class="form-control" data-validate="cepCand" />
                 </div>
 
                 <div class="mb-3">
                     <label for="estadoCandidato" class="form-label">Estado:</label>
-                    <input type="text" id="estadoCandidato" class="form-control" />
+                    <input type="text" id="estadoCandidato" class="form-control" data-validate="estadoCand" />
                 </div>
 
                 <div class="mb-3">
                     <label for="descricaoCandidato" class="form-label">Informe aqui uma breve descrição sobre você: </label>
-                    <textarea class="form-control" id="descricaoCandidato" rows="3"></textarea>
+                    <textarea class="form-control" id="descricaoCandidato" rows="3" data-validate="descricaoCand"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="competenciasCandidato" class="form-label">Informe aqui suas competências e conhecimentos: </label>
-                    <textarea class="form-control" id="competenciasCandidato" rows="3"></textarea>
+                    <textarea class="form-control" id="competenciasCandidato" rows="3" data-validate="competenciasCand"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="formacaoCandidato" class="form-label">Informe aqui suas formação: </label>
-                    <textarea class="form-control" id="formacaoCandidato" rows="3"></textarea>
+                    <label for="formacaoCandidato" class="form-label">Informe aqui sua formação: </label>
+                    <textarea class="form-control" id="formacaoCandidato" rows="3" data-validate="formacaoCand"></textarea>
                 </div>
 
                 <div class="mb-3">
 
                     <label for="inputPasswordCandidato" class="col-form-label">Crie sua senha:</label>
-                    <input type="password" id="inputPasswordCandidato" class="form-control" aria-describedby="passwordHelpInline">
+                    <input type="password" id="inputPasswordCandidato" class="form-control" aria-describedby="passwordHelpInline" data-validate="senhaCand">
 
                 </div>
 
@@ -148,7 +148,9 @@
         </div>
     </div>
 
-    <script src="cadastro.js"></script>
-    <script src = "salvarDadosCadastro.js"></script>
+    <script type = "module" src="./cadastro.js" ></script>
+    <script type = "module" src = "./salvarDadosCadastro.js" ></script>
+    <script type = "module" src = "./validarDadosCadastro.js" ></script>
+
 </body>
 </html>

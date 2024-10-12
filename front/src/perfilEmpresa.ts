@@ -13,24 +13,24 @@ document.addEventListener('DOMContentLoaded', function() {
 function carregarPerfilEmpresa(): void {
 
 
-    const empresaString = localStorage.getItem('empresa');
+    const empresasString = localStorage.getItem('empresas');
+    if (empresasString) {
 
-    if (empresaString) {
-
-        const empresa = JSON.parse(empresaString);
+        const empresas = JSON.parse(empresasString);
+        const primeiraEmpresa = empresas[0];
         const nomeEmpresa = document.getElementById('nomeEmpresa');
 
         if (nomeEmpresa) {
-            nomeEmpresa.innerText = empresa.nome;
+            nomeEmpresa.innerText = primeiraEmpresa.nome;
         }
         const descricaoEmpresa = document.getElementById('descricaoEmpresa');
 
         if (descricaoEmpresa) {
-            descricaoEmpresa.innerText = empresa.descricao;
+            descricaoEmpresa.innerText = primeiraEmpresa.descricao;
         }
     } else {
 
-        console.warn('Nenhum empresa encontrado no localStorage.');
+        console.warn('Nenhuma empresa encontrada no localStorage.');
     }
 }
 

@@ -1,68 +1,71 @@
-"use strict";
 var _a, _b;
+import { validarDadosCandidato } from './validarDadosCadastro.js';
+import { validarDadosEmpresa } from "./validarDadosCadastro.js";
+document.addEventListener('DOMContentLoaded', function () {
+    //validarDadosCandidato();
+});
 function salvarCandidato() {
-    const nome = document.getElementById('nomeCandidato').value;
-    const email = document.getElementById('emailCandidato').value;
-    const cpf = document.getElementById('cpfCandidato').value;
-    const dataNascimento = document.getElementById('dataNascimento').value;
-    const pais = document.getElementById('paisCandidato').value;
-    const cep = document.getElementById('cepCandidato').value;
-    const estado = document.getElementById('estadoCandidato').value;
-    const descricao = document.getElementById('descricaoCandidato').value;
-    const competencias = document.getElementById('competenciasCandidato').value;
-    const formacao = document.getElementById('formacaoCandidato').value;
-    const senha = document.getElementById('inputPasswordCandidato').value;
-    const senhaHash = btoa(senha);
-    const candidatoId = gerarIdAleatorio();
     const candidato = {
-        nome,
-        email,
-        cpf,
-        dataNascimento,
-        pais,
-        cep,
-        estado,
-        descricao,
-        competencias,
-        formacao,
-        candidatoId,
-        senha: senhaHash
+        nome: document.getElementById('nomeCandidato').value,
+        email: document.getElementById('emailCandidato').value,
+        cpf: document.getElementById('cpfCandidato').value,
+        dataNascimento: document.getElementById('dataNascimento').value,
+        pais: document.getElementById('paisCandidato').value,
+        cep: document.getElementById('cepCandidato').value,
+        estado: document.getElementById('estadoCandidato').value,
+        descricao: document.getElementById('descricaoCandidato').value,
+        competencias: document.getElementById('competenciasCandidato').value,
+        formacao: document.getElementById('formacaoCandidato').value,
+        senha: document.getElementById('inputPasswordCandidato').value,
+        candidatoId: gerarIdAleatorio(),
     };
-    const candidatosString = localStorage.getItem('candidatos');
-    const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
-    candidatos.push(candidato);
-    localStorage.setItem('candidatos', JSON.stringify(candidatos));
-    alert('Candidato cadastrado!');
+    if (validarDadosCandidato(candidato)) {
+        const candidatosString = localStorage.getItem('candidatos');
+        const candidatos = candidatosString ? JSON.parse(candidatosString) : [];
+        candidato.senha = btoa(candidato.senha);
+        candidatos.push(candidato);
+        localStorage.setItem('candidatos', JSON.stringify(candidatos));
+        console.log("Olá, estou salvando o candidato!!", candidato);
+        alert('Candidato cadastrado!');
+        window.location.href = 'login.html';
+        return;
+    }
+    else {
+        alert('Não foi possível cadastrar! Verifique se os dados estão preenchidos corretamente.');
+        window.location.href = 'cadastro.html';
+        return;
+    }
 }
 function salvarEmpresa() {
-    const nome = document.getElementById('nomeEmpresa').value;
-    const email = document.getElementById('emailEmpresa').value;
-    const cnpj = document.getElementById('cnpjEmpresa').value;
-    const dataFundacao = document.getElementById('dataFundacao').value;
-    const pais = document.getElementById('paisEmpresa').value;
-    const cep = document.getElementById('cepEmpresa').value;
-    const estado = document.getElementById('estadoEmpresa').value;
-    const descricao = document.getElementById('descricaoEmpresa').value;
-    const competencias = document.getElementById('competenciasEmpresa').value;
-    const senha = document.getElementById('inputPasswordEmpresa').value;
-    const senhaHash = btoa(senha);
-    const empresaId = gerarIdAleatorio();
     const empresa = {
-        nome,
-        email,
-        cnpj,
-        dataFundacao,
-        pais,
-        cep,
-        estado,
-        descricao,
-        competencias,
-        empresaId,
-        senha: senhaHash
+        nome: document.getElementById('nomeEmpresa').value,
+        email: document.getElementById('emailEmpresa').value,
+        cnpj: document.getElementById('cnpjEmpresa').value,
+        dataFundacao: document.getElementById('dataFundacao').value,
+        pais: document.getElementById('paisEmpresa').value,
+        cep: document.getElementById('cepEmpresa').value,
+        estado: document.getElementById('estadoEmpresa').value,
+        descricao: document.getElementById('descricaoEmpresa').value,
+        competencias: document.getElementById('competenciasEmpresa').value,
+        senha: document.getElementById('inputPasswordEmpresa').value,
+        empresaId: gerarIdAleatorio(),
     };
-    localStorage.setItem('empresa', JSON.stringify(empresa));
-    alert('Empresa cadastrada!');
-    //agora preciso encaminhar para a tela de login
+    if (validarDadosEmpresa(empresa)) {
+        const empresasString = localStorage.getItem('empresas');
+        const empresas = empresasString ? JSON.parse(empresasString) : [];
+        empresa.senha = btoa(empresa.senha);
+        empresas.push(empresa);
+        localStorage.setItem('empresas', JSON.stringify(empresas));
+        console.log("Olá, estou salvando a empresa!!", empresa);
+        alert('Empresa cadastrada!');
+        window.location.href = 'login.html';
+        return;
+    }
+    else {
+        alert('Não foi possível cadastrar! Verifique se os dados estão preenchidos corretamente.');
+        window.location.href = 'cadastro.html';
+        return;
+    }
 }
 function gerarIdAleatorio() {
     return Date.now().toString(36) + Math.random().toString(36).substring(2, 9);

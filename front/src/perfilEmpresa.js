@@ -9,20 +9,21 @@ document.addEventListener('DOMContentLoaded', function () {
     (_c = document.getElementById('cadastrarVaga')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', salvarVaga);
 });
 function carregarPerfilEmpresa() {
-    const empresaString = localStorage.getItem('empresa');
-    if (empresaString) {
-        const empresa = JSON.parse(empresaString);
+    const empresasString = localStorage.getItem('empresas');
+    if (empresasString) {
+        const empresas = JSON.parse(empresasString);
+        const primeiraEmpresa = empresas[0];
         const nomeEmpresa = document.getElementById('nomeEmpresa');
         if (nomeEmpresa) {
-            nomeEmpresa.innerText = empresa.nome;
+            nomeEmpresa.innerText = primeiraEmpresa.nome;
         }
         const descricaoEmpresa = document.getElementById('descricaoEmpresa');
         if (descricaoEmpresa) {
-            descricaoEmpresa.innerText = empresa.descricao;
+            descricaoEmpresa.innerText = primeiraEmpresa.descricao;
         }
     }
     else {
-        console.warn('Nenhum empresa encontrado no localStorage.');
+        console.warn('Nenhuma empresa encontrada no localStorage.');
     }
 }
 function mostrarFormularioVagas() {
