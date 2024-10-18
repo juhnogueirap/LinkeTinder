@@ -28,6 +28,7 @@ LinkeTinder utiliza:
 - Java JDK 17.0.12
 - HTML/CSS
 - BootStrap
+- dbdiagram.io
 
 ## Utilização - Versão atual
 
@@ -46,6 +47,11 @@ Navegue até a pasta src.
 Execute o arquivo Main.groovy e siga as instruções do terminal.
 
 > Para compilar Main.groovy é necessário JDK16+ e para executar JRE8+
+
+## Diagrama ER 
+
+O diagrama ER do LinkeTinder pode ser visualizado acessando o link `https://dbdiagram.io/d/6712983497a66db9a37dedf1`
+Se preferir, também pode ser visualizado a partir do arquivo `DiagramaBD.png` presente na pasta raiz da aplicação.
 
 ## Considerações
 
