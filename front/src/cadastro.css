@@ -21,3 +21,9 @@ body {
     height: 100%;
 
 }
+
+.password-hint {
+    font-size: 0.9em;
+    color: #888; /* Cor mais clara */
+    margin-top: 5px;
+}

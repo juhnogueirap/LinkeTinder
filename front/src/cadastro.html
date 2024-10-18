@@ -31,56 +31,67 @@
             <div id="formularioCandidato" class="mt-4 w-100" >
                 <div class="mb-3">
                     <label for="nomeCandidato" class="form-label">Nome:</label>
-                    <input type="text" id="nomeCandidato" class="form-control" data-validate="nomeCand"/>
+                    <input type="text" id="nomeCandidato" class="form-control" data-validate="nomeCand" placeholder=" Ex.: João Nascimento D'ávila"/>
                 </div>
                 <div class="mb-3">
                     <label for="emailCandidato" class="form-label">Email:</label>
-                    <input type="email" id="emailCandidato" class="form-control" data-validate="emailCand"/>
+                    <input type="email" id="emailCandidato" class="form-control" data-validate="emailCand" placeholder=" Ex.: example@gmail.com.br"/>
                 </div>
 
                 <div class="mb-3">
                     <label for="cpfCandidato" class="form-label">CPF:</label>
-                    <input type="text" id="cpfCandidato" class="form-control" data-validate="cpfCand" />
+                    <input type="text" id="cpfCandidato" class="form-control" data-validate="cpfCand" placeholder=" XXX.XXX.XXX-XX" />
                 </div>
 
                 <div class = "mb-3">
                     <label for="dataNascimento" class="form-label">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimento" class = "form-control" data-validate="dataNascimento">
+                    <input type="date" id="dataNascimento" class = "form-control" data-validate="dataNascimento" >
                 </div>
 
                 <div class="mb-3">
                     <label for="paisCandidato" class="form-label">País:</label>
-                    <input type="text" id="paisCandidato" class="form-control" data-validate="paisCand" />
+                    <input type="text" id="paisCandidato" class="form-control" data-validate="paisCand" placeholder=" Ex.: Brasil"/>
                 </div>
 
                 <div class="mb-3">
                     <label for="cepCandidato" class="form-label">CEP:</label>
-                    <input type="text" id="cepCandidato" class="form-control" data-validate="cepCand" />
+                    <input type="text" id="cepCandidato" class="form-control" data-validate="cepCand" placeholder="XXXXX-XXX"/>
                 </div>
 
                 <div class="mb-3">
                     <label for="estadoCandidato" class="form-label">Estado:</label>
-                    <input type="text" id="estadoCandidato" class="form-control" data-validate="estadoCand" />
+                    <input type="text" id="estadoCandidato" class="form-control" data-validate="estadoCand" placeholder="Ex.: RJ" />
                 </div>
 
                 <div class="mb-3">
                     <label for="descricaoCandidato" class="form-label">Informe aqui uma breve descrição sobre você: </label>
-                    <textarea class="form-control" id="descricaoCandidato" rows="3" data-validate="descricaoCand"></textarea>
+                    <textarea class="form-control" id="descricaoCandidato" rows="3" data-validate="descricaoCand" placeholder="Máximo de 500 caracteres"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="competenciasCandidato" class="form-label">Informe aqui suas competências e conhecimentos: </label>
-                    <textarea class="form-control" id="competenciasCandidato" rows="3" data-validate="competenciasCand"></textarea>
+                    <textarea class="form-control" id="competenciasCandidato" rows="3" data-validate="competenciasCand" placeholder="Descreva suas competências separando-as por vírgula. Ex.: Java, HTML/CSS, C# "></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="formacaoCandidato" class="form-label">Informe aqui sua formação: </label>
-                    <textarea class="form-control" id="formacaoCandidato" rows="3" data-validate="formacaoCand"></textarea>
+                    <textarea class="form-control" id="formacaoCandidato" rows="3" data-validate="formacaoCand" placeholder="Máximo de 100 caracteres"></textarea>
                 </div>
 
                 <div class="mb-3">
 
                     <label for="inputPasswordCandidato" class="col-form-label">Crie sua senha:</label>
                     <input type="password" id="inputPasswordCandidato" class="form-control" aria-describedby="passwordHelpInline" data-validate="senhaCand">
+
+                    <div class="password-hint">
+                        Senha deve conter pelo menos:
+                        <ul>
+                            <li>Uma letra minúscula</li>
+                            <li>Uma letra maiúscula</li>
+                            <li>Um caractere especial</li>
+                            <li>Um número</li>
+                            <li>No mínimo 4 e no máximo 8 caracteres</li>
+                        </ul>
+                    </div>
 
                 </div>
 
@@ -96,15 +107,15 @@
             <div id="formularioEmpresa" class="mt-4 w-100" style="display: none;">
                 <div class="mb-3">
                     <label for="nomeEmpresa" class="form-label">Nome da Empresa:</label>
-                    <input type="text" id="nomeEmpresa" class="form-control" />
+                    <input type="text" id="nomeEmpresa" class="form-control" placeholder=" Ex.: Empresa Fictícia LTDA" />
                 </div>
                 <div class="mb-3">
                     <label for="emailEmpresa" class="form-label">Email da Empresa:</label>
-                    <input type="email" id="emailEmpresa" class="form-control" />
+                    <input type="email" id="emailEmpresa" class="form-control" placeholder=" Ex.: example@gmail.com.br"/>
                 </div>
                 <div class="mb-3">
                     <label for="cnpjEmpresa" class="form-label">CNPJ:</label>
-                    <input type="text" id="cnpjEmpresa" class="form-control" />
+                    <input type="text" id="cnpjEmpresa" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX"/>
                 </div>
                 <div class = "mb-3">
                     <label for="dataFundacao" class="form-label">Data de fundação:</label>
@@ -112,32 +123,42 @@
                 </div>
                 <div class="mb-3">
                     <label for="paisEmpresa" class="form-label">País:</label>
-                    <input type="text" id="paisEmpresa" class="form-control" />
+                    <input type="text" id="paisEmpresa" class="form-control" placeholder=" Ex.: Brasil"/>
                 </div>
 
                 <div class="mb-3">
                     <label for="cepEmpresa" class="form-label">CEP:</label>
-                    <input type="text" id="cepEmpresa" class="form-control" />
+                    <input type="text" id="cepEmpresa" class="form-control" placeholder="XXXXX-XXX" />
                 </div>
 
                 <div class="mb-3">
                     <label for="estadoEmpresa" class="form-label">Estado:</label>
-                    <input type="text" id="estadoEmpresa" class="form-control" />
+                    <input type="text" id="estadoEmpresa" class="form-control" placeholder="Ex.: RJ"/>
                 </div>
 
                 <div class="mb-3">
                     <label for="descricaoEmpresa" class="form-label">Informe aqui uma breve descrição sobre a empresa: </label>
-                    <textarea class="form-control" id="descricaoEmpresa" rows="3"></textarea>
+                    <textarea class="form-control" id="descricaoEmpresa" rows="3" placeholder="Máximo de 500 caracteres"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="competenciasEmpresa" class="form-label">Informe aqui as competências e conhecimentos requisitadas pela empresa: </label>
-                    <textarea class="form-control" id="competenciasEmpresa" rows="3"></textarea>
+                    <textarea class="form-control" id="competenciasEmpresa" rows="3" placeholder="Descreva as competências requisitadas na empresa separando-as por vírgula. Ex.: Java, HTML/CSS, C# "></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="inputPasswordEmpresa" class="col-form-label">Crie sua senha:</label>
                     <input type="password" id="inputPasswordEmpresa" class="form-control" aria-describedby="passwordHelpInline">
+                    <div class="password-hint">
+                        Senha deve conter pelo menos:
+                        <ul>
+                            <li>Uma letra minúscula</li>
+                            <li>Uma letra maiúscula</li>
+                            <li>Um caractere especial</li>
+                            <li>Um número</li>
+                            <li>No mínimo 4 e no máximo 8 caracteres</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class = "pb-3">
