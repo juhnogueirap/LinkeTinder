@@ -11,8 +11,13 @@ A partir daí, é revelado o perfil do candidato à empresa e é possível dar c
 
 ## Features
 
-- Opção de listar candidatos
-- Opção de listar empresas
+- Cadastrar-se como empresa
+- Cadastrar-se como candidato
+- Opção de criar vaga
+- Opção de listar candidatos anonimamente
+- Opção de listar empresas anonimamente
+- Opção de listar vagas anoninamente
+
 
 ## Tecnologias
 
@@ -21,8 +26,21 @@ LinkeTinder utiliza:
 - IntelliJ Idea
 - Groovy 4.0.14
 - Java JDK 17.0.12
+- HTML/CSS
+- BootStrap
 
-## Execução
+## Utilização - Versão atual
+
+1 - Instale o código fonte do LinkeTinder em sua máquina.
+
+2 - Configure o Live-Server de acordo com suas preferências.
+
+3 - Navegue até a pasta `front >> src`.
+
+4 - Abra o arquivo `index.html` em seu navegador.
+
+
+## Execução - Versão inicial (terminal) 
 
 Navegue até a pasta src.
 Execute o arquivo Main.groovy e siga as instruções do terminal.
@@ -31,7 +49,7 @@ Execute o arquivo Main.groovy e siga as instruções do terminal.
 
 ## Considerações
 
-LinkeTinder é um projeto realizado a partir do processo de capacitação ACZG da empreza ZeroGlosa.
+LinkeTinder é um projeto realizado a partir do processo de capacitação ACZG da empresa ZeroGlosa.
 
 ## Desenvolvimento
 
