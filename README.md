@@ -50,7 +50,7 @@ Execute o arquivo Main.groovy e siga as instruções do terminal.
 
 ## Diagrama ER 
 
-O diagrama ER do LinkeTinder pode ser visualizado acessando o link `https://dbdiagram.io/d/6712983497a66db9a37dedf1`
+O diagrama ER do LinkeTinder foi feito utilizando o [dbdiagram.io] (https://dbdiagram.io/d/6712983497a66db9a37dedf1)
 Se preferir, também pode ser visualizado a partir do arquivo `DiagramaBD.png` presente na pasta raiz da aplicação.
 
 ## Considerações
