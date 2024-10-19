@@ -19,6 +19,8 @@ repositories {
 }
 ''
 dependencies {
+
+    implementation 'org.postgresql:postgresql:42.6.0'
     // Use the latest Groovy version for building this library
     implementation libs.groovy.all
 

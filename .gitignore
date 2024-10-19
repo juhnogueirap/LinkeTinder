@@ -4,7 +4,7 @@ out/
 !**/src/test/**/out/
 ./node_modules
 ./out
-
+/app/src/main/groovy/database/DatabaseConnection.groovy
 ### Eclipse ###
 .apt_generated
 .classpath
