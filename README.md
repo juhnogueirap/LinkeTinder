@@ -29,6 +29,8 @@ LinkeTinder utiliza:
 - HTML/CSS
 - BootStrap
 - dbdiagram.io
+- PostgreSQL
+- JDBC
 
 ## Utilização - Versão atual
 
@@ -53,6 +55,11 @@ Execute o arquivo Main.groovy e siga as instruções do terminal.
 O diagrama ER do LinkeTinder foi feito utilizando o [dbdiagram.io](https://dbdiagram.io/d/6712983497a66db9a37dedf1)
 
 Se preferir, também pode ser visualizado a partir do arquivo `DiagramaBD.png` presente na pasta raiz da aplicação.
+
+## Conexão com o PostgreSQL
+
+A conexão da aplicação com o PostgreSQL foi realizada utilizando o JDBC.
+O arquivo de manipualação de dados nas tabelas `scripts.sql` pode ser encontrado pelo caminho `app/src/main/groovy/database/scripts.sql`
 
 ## Considerações
 
